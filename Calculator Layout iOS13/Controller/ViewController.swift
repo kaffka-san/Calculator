@@ -21,7 +21,7 @@ class ViewController: UIViewController {
    
     @IBAction func numberPressed(_ sender: UIButton) {
         if calc.isFirstNum{
-            if let str = sender.titleLabel?.text {
+            if let str = sender.titleLabel?.text{
                 if  calc.resStringA.count < maxInputCount {
                     calc.resStringA.append(str)
                     resultTextLabel.text = calc.resStringA
@@ -71,16 +71,16 @@ class ViewController: UIViewController {
         if let operationSign = sender.titleLabel?.text{
             switch operationSign {
             case "×" :
-                calc.operationPressed = Calculator.operation.multiply
+                calc.operationPressed = operation.multiply
             case "-" :
-                calc.operationPressed = Calculator.operation.minus
+                calc.operationPressed = operation.minus
             case "+" :
-                calc.operationPressed = Calculator.operation.plus
+                calc.operationPressed = operation.plus
                
             case "÷":
-                calc.operationPressed = Calculator.operation.divide      
+                calc.operationPressed = operation.divide
             default:
-                calc.operationPressed = Calculator.operation.none
+                calc.operationPressed = operation.none
             }
         }
         if calc.chainOperationCheck(){
