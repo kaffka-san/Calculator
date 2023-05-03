@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultTextLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         calc.setToDefault()
     }
     
@@ -23,74 +22,41 @@ class ViewController: UIViewController {
         if resultTextLabel.text?.count ?? 0 >= maxInputCount{
             return
         }
-       
-        resultTextLabel.text =  calc.numberEntered(number: sender.titleLabel?.text ?? "", maxInput: maxInputCount)
-       /* if calc.isFirstNum{
-            if let str = sender.titleLabel?.text{
-                if  calc.resStringA.count < maxInputCount {
-                    calc.resStringA.append(str)
-                    resultTextLabel.text = calc.resStringA
-                }
-            }
-        }
-        else {
-            
-            if let str = sender.titleLabel?.text {
-                if  calc.resStringB.count < maxInputCount {
-                    calc.resStringB.append(str)
-                    resultTextLabel.text = calc.resStringB
-                }
-            }
-        }
-        */
-    }
-  /*  @IBAction func signButtonPressed(_ sender: UIButton) {
-        if calc.isFirstNum{
-            calc.toogleSignA()
-            resultTextLabel.text = calc.resStringA
-        }
-        else {
-            calc.toogleSignB()
-            resultTextLabel.text = calc.resStringB
-        }
-    }
-    
-    @IBAction func resetButtonPressed(_ sender: UIButton) {
-        resultTextLabel.text = "0"
-        calc.setToDefault()
-    }
-    
-    @IBAction func percentButtonPressed(_ sender: UIButton) {
-        if calc.isFirstNum {
-            calc.getPercentfromNumA()
-            resultTextLabel.text = calc.resStringA
-        }
-        else {
-            calc.getPercentfromNumB()
-            resultTextLabel.text = calc.resStringB
-        }
         
+        resultTextLabel.text =  calc.numberEntered(number: sender.titleLabel?.text ?? "", maxInput: maxInputCount)
     }
-   */
+    @IBAction func singleOperationButtonPressed(_ sender: UIButton) {
+        var currentSymbolPressed = symbol.none
+        if let enteredSymbol = sender.titleLabel?.text{
+            switch enteredSymbol{
+            case "AC":
+                currentSymbolPressed = symbol.clear
+            case "%":
+                currentSymbolPressed = symbol.percent
+            case "+/-":
+                currentSymbolPressed = symbol.sign
+            default:
+                currentSymbolPressed = symbol.none
+            }
+        }
+        if currentSymbolPressed != symbol.none{
+            calc.symbolEntered(symbolName: currentSymbolPressed)
+            resultTextLabel.text = calc.applySymbol()
+        }
+    }
     @IBAction func operationButtonPressed(_ sender: UIButton) {
         var currentOperation = operation.none
         if let enteredOperation = sender.titleLabel?.text{
             switch enteredOperation {
             case "×" :
-               currentOperation = operation.multiply
+                currentOperation = operation.multiply
             case "-" :
                 currentOperation = operation.minus
             case "+" :
-               currentOperation = operation.plus
+                currentOperation = operation.plus
                 
             case "÷":
                 currentOperation = operation.divide
-            case "+/-":
-                currentOperation = operation.sign
-            case "AC":
-                currentOperation = operation.clear
-            case "%":
-                currentOperation = operation.percent
                 
             default:
                 currentOperation = operation.none
@@ -100,16 +66,8 @@ class ViewController: UIViewController {
             calc.operationEntered(operationName: currentOperation)
             resultTextLabel.text = calc.getResult(isResultPressed: false)
         }
-        /*
-        if calc.chainOperationCheck(){
-            resultTextLabel.text = calc.getResult()
-        }
-        calc.isFirstNum = false
-        */
     }
-    
-    
-    
+
     @IBAction func getResultPressed(_ sender: UIButton) {
         resultTextLabel.text = calc.getResult(isResultPressed: true)
     }
