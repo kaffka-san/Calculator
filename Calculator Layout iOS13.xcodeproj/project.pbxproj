@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3059748229FAD16F0083B1D7 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059748129FAD16F0083B1D7 /* Calculator.swift */; };
+		3059748D2A02DB050083B1D7 /* Calculator_Layout_iOS13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059748C2A02DB050083B1D7 /* Calculator_Layout_iOS13Tests.swift */; };
 		AD0C513722CA22D500AADC4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C513622CA22D500AADC4D /* AppDelegate.swift */; };
 		AD0C513922CA22D500AADC4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C513822CA22D500AADC4D /* SceneDelegate.swift */; };
 		AD0C513B22CA22D500AADC4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C513A22CA22D500AADC4D /* ViewController.swift */; };
@@ -17,8 +18,20 @@
 		AD0C515B22CA2A7B00AADC4D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD0C515A22CA2A7B00AADC4D /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3059748E2A02DB050083B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD0C512B22CA22D500AADC4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD0C513222CA22D500AADC4D;
+			remoteInfo = "Calculator Layout iOS13";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3059748129FAD16F0083B1D7 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		3059748A2A02DB050083B1D7 /* Calculator Layout iOS13Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator Layout iOS13Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3059748C2A02DB050083B1D7 /* Calculator_Layout_iOS13Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_Layout_iOS13Tests.swift; sourceTree = "<group>"; };
 		AD0C513322CA22D500AADC4D /* Calculator Layout iOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator Layout iOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0C513622CA22D500AADC4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD0C513822CA22D500AADC4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +44,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		305974872A02DB050083B1D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD0C513022CA22D500AADC4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,11 +86,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3059748B2A02DB050083B1D7 /* Calculator Layout iOS13Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3059748C2A02DB050083B1D7 /* Calculator_Layout_iOS13Tests.swift */,
+			);
+			path = "Calculator Layout iOS13Tests";
+			sourceTree = "<group>";
+		};
 		AD0C512A22CA22D500AADC4D = {
 			isa = PBXGroup;
 			children = (
 				AD0C515A22CA2A7B00AADC4D /* README.md */,
 				AD0C513522CA22D500AADC4D /* Calculator Layout iOS13 */,
+				3059748B2A02DB050083B1D7 /* Calculator Layout iOS13Tests */,
 				AD0C513422CA22D500AADC4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				AD0C513322CA22D500AADC4D /* Calculator Layout iOS13.app */,
+				3059748A2A02DB050083B1D7 /* Calculator Layout iOS13Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +130,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		305974892A02DB050083B1D7 /* Calculator Layout iOS13Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 305974922A02DB050083B1D7 /* Build configuration list for PBXNativeTarget "Calculator Layout iOS13Tests" */;
+			buildPhases = (
+				305974862A02DB050083B1D7 /* Sources */,
+				305974872A02DB050083B1D7 /* Frameworks */,
+				305974882A02DB050083B1D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3059748F2A02DB050083B1D7 /* PBXTargetDependency */,
+			);
+			name = "Calculator Layout iOS13Tests";
+			productName = "Calculator Layout iOS13Tests";
+			productReference = 3059748A2A02DB050083B1D7 /* Calculator Layout iOS13Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AD0C513222CA22D500AADC4D /* Calculator Layout iOS13 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD0C514722CA22D800AADC4D /* Build configuration list for PBXNativeTarget "Calculator Layout iOS13" */;
@@ -124,10 +172,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "The App Brewery";
 				TargetAttributes = {
+					305974892A02DB050083B1D7 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = AD0C513222CA22D500AADC4D;
+					};
 					AD0C513222CA22D500AADC4D = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -147,11 +199,19 @@
 			projectRoot = "";
 			targets = (
 				AD0C513222CA22D500AADC4D /* Calculator Layout iOS13 */,
+				305974892A02DB050083B1D7 /* Calculator Layout iOS13Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		305974882A02DB050083B1D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD0C513122CA22D500AADC4D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +226,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		305974862A02DB050083B1D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3059748D2A02DB050083B1D7 /* Calculator_Layout_iOS13Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD0C512F22CA22D500AADC4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +247,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3059748F2A02DB050083B1D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD0C513222CA22D500AADC4D /* Calculator Layout iOS13 */;
+			targetProxy = 3059748E2A02DB050083B1D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		AD0C514122CA22D800AADC4D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -191,6 +267,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		305974902A02DB050083B1D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaffka.Calculator-Layout-iOS13Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator Layout iOS13.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Calculator Layout iOS13";
+			};
+			name = Debug;
+		};
+		305974912A02DB050083B1D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaffka.Calculator-Layout-iOS13Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator Layout iOS13.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Calculator Layout iOS13";
+			};
+			name = Release;
+		};
 		AD0C514522CA22D800AADC4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -344,6 +464,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		305974922A02DB050083B1D7 /* Build configuration list for PBXNativeTarget "Calculator Layout iOS13Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				305974902A02DB050083B1D7 /* Debug */,
+				305974912A02DB050083B1D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AD0C512E22CA22D500AADC4D /* Build configuration list for PBXProject "Calculator Layout iOS13" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
