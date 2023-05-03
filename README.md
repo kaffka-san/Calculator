@@ -12,5 +12,5 @@ https://www.udemy.com/course/ios-13-app-development-bootcamp/
 ## Landscape
 ![Landscape](Documentation/Landscape.png)
 
-https://user-images.githubusercontent.com/127501232/235987203-a69a2a14-a3f1-48a7-81ed-16a6d4a79828.mp4
+https://github.com/kaffka-san/Calculator/blob/master/Images/percent.gif?raw=true
 
