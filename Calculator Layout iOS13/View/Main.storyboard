@@ -22,7 +22,7 @@
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcT-5N-3gw">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 1232312322263276372367326" textAlignment="right" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gC2-i9-XzD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gC2-i9-XzD">
                                                 <rect key="frame" x="25" y="9" width="364" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Lts-S4-2Je"/>
@@ -50,7 +50,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="percentButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="jru-mu-NYG"/>
+                                                    <action selector="operationButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="31r-zS-JT9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ros-cP-dSM">
@@ -61,7 +61,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="signButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="Oyd-cp-n68"/>
+                                                    <action selector="operationButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="C9h-bv-l5q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xg-es-CLv">
@@ -72,7 +72,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="resetButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="gtn-s9-7oF"/>
+                                                    <action selector="operationButtonPressed:" destination="ey4-0b-agg" eventType="touchUpInside" id="IeB-e2-qYC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G64-9b-ycy">

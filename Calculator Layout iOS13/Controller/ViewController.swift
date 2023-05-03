@@ -15,12 +15,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        calc.isFirstNum = true
-        resultTextLabel.text = "0"
+        calc.setToDefault()
     }
-   
+    
     @IBAction func numberPressed(_ sender: UIButton) {
-        if calc.isFirstNum{
+        
+        if resultTextLabel.text?.count ?? 0 >= maxInputCount{
+            return
+        }
+       
+        resultTextLabel.text =  calc.numberEntered(number: sender.titleLabel?.text ?? "", maxInput: maxInputCount)
+       /* if calc.isFirstNum{
             if let str = sender.titleLabel?.text{
                 if  calc.resStringA.count < maxInputCount {
                     calc.resStringA.append(str)
@@ -37,9 +42,9 @@ class ViewController: UIViewController {
                 }
             }
         }
-
+        */
     }
-    @IBAction func signButtonPressed(_ sender: UIButton) {
+  /*  @IBAction func signButtonPressed(_ sender: UIButton) {
         if calc.isFirstNum{
             calc.toogleSignA()
             resultTextLabel.text = calc.resStringA
@@ -66,34 +71,47 @@ class ViewController: UIViewController {
         }
         
     }
+   */
     @IBAction func operationButtonPressed(_ sender: UIButton) {
-       
-        if let operationSign = sender.titleLabel?.text{
-            switch operationSign {
+        var currentOperation = operation.none
+        if let enteredOperation = sender.titleLabel?.text{
+            switch enteredOperation {
             case "×" :
-                calc.operationPressed = operation.multiply
+               currentOperation = operation.multiply
             case "-" :
-                calc.operationPressed = operation.minus
+                currentOperation = operation.minus
             case "+" :
-                calc.operationPressed = operation.plus
-               
+               currentOperation = operation.plus
+                
             case "÷":
-                calc.operationPressed = operation.divide
+                currentOperation = operation.divide
+            case "+/-":
+                currentOperation = operation.sign
+            case "AC":
+                currentOperation = operation.clear
+            case "%":
+                currentOperation = operation.percent
+                
             default:
-                calc.operationPressed = operation.none
+                currentOperation = operation.none
             }
         }
+        if currentOperation != operation.none{
+            calc.operationEntered(operationName: currentOperation)
+            resultTextLabel.text = calc.getResult(isResultPressed: false)
+        }
+        /*
         if calc.chainOperationCheck(){
             resultTextLabel.text = calc.getResult()
         }
         calc.isFirstNum = false
-     
+        */
     }
     
-
+    
     
     @IBAction func getResultPressed(_ sender: UIButton) {
-        resultTextLabel.text = calc.getResult()
+        resultTextLabel.text = calc.getResult(isResultPressed: true)
     }
 }
 
