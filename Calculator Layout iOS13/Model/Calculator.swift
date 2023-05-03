@@ -5,107 +5,113 @@
 //  Created by Anastasia Lenina on 27.04.2023.
 //  Copyright © 2023 The App Brewery. All rights reserved.
 //
+import Foundation
+
 enum operation {
     case plus
     case minus
     case divide
     case multiply
-    case none
-}
-enum symbol{
     case percent
     case sign
     case clear
+    case compute
     case none
 }
-import Foundation
+
+
 struct Calculator {
     private var resStringA : String = ""
-    private var resStringB : String = ""
-    private var isFirstNum : Bool = true
-    private let formatter = NumberFormatter()
     private var operationPressed : operation = .none
-    private var prevOperationPressed : operation = .none
-    private var futureOperationPressed : operation = .none
-    private var symbolPressed : symbol = .none
+    private var resStringB : String = ""
     
-    mutating func numberEntered(number: String, maxInput: Int)->String{
-        if !number.isEmpty &&  resStringA.count < maxInput {
-            if isFirstNum{
-                resStringA.append(number)
-                return resStringA
-            }
-            else{
-                resStringB.append(number)
-                return resStringB
-            }
+
+    private var isShowingSecondNumber : Bool {
+        get {
+            !resStringA.isEmpty && operationPressed != operation.none && !resStringB.isEmpty
         }
-        return ""
     }
     
-    mutating func operationEntered(operationName: operation ){
-        //futureOperationPressed = operationName
-        operationPressed = operationName
-       
-    }
-    mutating func symbolEntered(symbolName: symbol ){
-        symbolPressed = symbolName
-    }
+    private let formatter = NumberFormatter()
     
-    //MARK: - old Funcionality
-    mutating func setStringA (strA : String){
-        resStringA = strA
-    }
-    mutating func setStringB (strB : String){
-        resStringB = strB
-    }
-    mutating func applySymbol() -> String{
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 8
-        var numberResult : Float = 0.0
-        switch symbolPressed {
-        case .percent:
-            if let a = Float(resStringA), isFirstNum {
-                numberResult = a / 100.0
-                resStringA = String(formatter.string(from: numberResult as NSNumber) ?? "")
-                return resStringA
-            }
-            if let a = Float(resStringA), let b = Float(resStringB), !isFirstNum {
-                numberResult = a * b / 100.0
-                resStringB = String(formatter.string(from: numberResult as NSNumber) ?? "")
-                return resStringB
-                
-            }
-       case .sign:
-            if let a = Float(resStringA), isFirstNum {
-                numberResult = a * (-1)
-                resStringA = String(formatter.string(from: numberResult as NSNumber) ?? "")
-                return resStringA
-            }
-            if let b = Float(resStringB), !isFirstNum  {
-                numberResult = b * (-1)
-                resStringB = String(formatter.string(from: numberResult as NSNumber) ?? "")
-                return resStringB
-            }
-            
-            return String(formatter.string(from: numberResult as NSNumber) ?? "")
-        case .clear:
-            setToDefault()
-            return "0"
-        case .none:
-            return ""
+    mutating func numberEntered(_ number: String, _ maxInput: Int = 12) {
+        if number.isEmpty || resStringA.count >= maxInput {
+            return
         }
-        return ""
+        
+        if operationPressed == .none {
+            resStringA.append(number)
+        } else {
+            resStringB.append(number)
+        }
     }
-    mutating func getResult(isResultPressed: Bool) -> String {
+    
+    func getResult() -> String {
+        return isShowingSecondNumber ? resStringB : resStringA
+    }
+    
+    func getState() -> (String, operation, String) {
+        return (resStringA, operationPressed, resStringB)
+    }
+    
+    mutating func operationEntered(operationName: operation) {
+        if (operationName == .clear) {
+            clear()
+            return
+        }
         
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 8
-   
+        
+        if (operationPressed == .none) {
+            if (operationName == .sign) {
+                resStringA = resStringA.contains("-") ? resStringA.replacingOccurrences(of: "-", with: "") : "-" + resStringA
+                return
+            }
+            
+            if (operationName == .percent) {
+                // TODO: MOVE THE DOT
+                if let a = Float(resStringA) {
+                    let numberResult = a / 100.0
+                    resStringA = String(formatter.string(from: numberResult as NSNumber) ?? "")
+                }
+                return
+            }
+            
+            operationPressed = operationName
+            return
+        }
+        
+        // else compute, set result into resStringA, clear resStringB, replace operation witn new one
+        
+        if (operationName == .percent) {
+            if let a = Float(resStringA), let b = Float(resStringB) {
+                let numberResult = a * b / 100.0
+                resStringB = String(formatter.string(from: numberResult as NSNumber) ?? "")
+            }
+            return
+        }
+        
+        if (operationName == .sign) {
+            if let b = Float(resStringB)  {
+                let numberResult = b * (-1)
+                resStringB = String(formatter.string(from: numberResult as NSNumber) ?? "")
+            }
+            return
+        }
+        
+        if resStringB.isEmpty {
+            operationPressed = operationName
+            return
+        }
+        
         var numberResult : Float = 0.0
-        var stringResult = ""
-      
+        
         switch operationPressed {
+        case .compute:
+            operationEntered(operationName: .none)
+            return
+            
         case .plus:
             if let a = Float(resStringA), let b = Float(resStringB) {
                 numberResult =  a + b
@@ -117,41 +123,24 @@ struct Calculator {
         case .divide:
             if let a = Float(resStringA), let b = Float(resStringB) {
                 numberResult =  a / b
-              
             }
         case .multiply:
             if let a = Float(resStringA), let b = Float(resStringB) {
                 numberResult =  a * b
             }
-        case .none:
-            return ""
+            
+        default:
+            return
         }
-        if isFirstNum {
-            isFirstNum = false
-            return resStringA
-        }
-        stringResult = String(formatter.string(from: numberResult as NSNumber) ?? "")
-       
-        if isResultPressed {
-            setToDefault()
-            resStringA  = stringResult
-            return stringResult
-        }
-        else if chainOperationCheck(){
-            isFirstNum = false
-            resStringB  = ""
-        }
-        prevOperationPressed = operationPressed
-        resStringA  = stringResult
-        return stringResult
+        
+        resStringA = String(formatter.string(from: numberResult as NSNumber) ?? "")
+        resStringB = ""
+        operationPressed = operationName
     }
-
-    mutating func setToDefault(){
+    
+    mutating func clear(){
         resStringA  = ""
         resStringB  = ""
-        isFirstNum  = true
-    }
-    mutating func chainOperationCheck() -> Bool{
-        return  !resStringB.isEmpty
+        operationPressed = .none
     }
 }
